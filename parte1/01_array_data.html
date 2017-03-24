@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Arrays en Javascript</title>
+        <script type="text/javascript" src="d3.v3.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Aquí va el código html
+            var data = [132, 71, 34, 50, 89, 12, 28, 17, 23, 30];
+            console.log(data);
+            console.log(data[0]); //Elemento en posición 1
+            console.log(data[6]); //Elemento en posición 7
+
+            var donut = {key: "chocolate", value: 132};
+            console.log(donut);
+            console.log(donut.key, donut.value);
+
+            donut = {"key": "chocolate", "value": 133};
+            console.log(donut);
+            console.log(donut.key, donut.value);
+            console.log(donut["key"], donut["value"]);
+
+            donuts = [
+                {"key": "chocolate", "value": 132},
+                {"key": "normal", "value": 71},
+                {"key": "especial", "value": 34},
+                {"key": "glaseado", "value": 50}
+            ];
+
+            console.log(donuts);
+            console.log(donuts[1]["key"], donuts[1]["value"]);
+
+            for (var i=0, len = donuts.length; i < len; i++) {
+                console.log(i, donuts[i]["key"], donuts[i]["value"]);
+            }
+
+            //Funciones anónimas
+            donuts.forEach( function(entry) {
+                console.log(entry["key"], entry["value"]);
+            });
+        </script>
+    </body>
+</html>

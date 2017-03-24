@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title> Arrays: Map & Filter</title>
+        <script type="text/javascript" src="d3.v3.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Aquí va el código html
+            var data = [132, 71, 34, 50, 89, 12, 28, 17, 23, 30];
+            
+            var dataGreaterThan50 = data.filter(function(entry) {
+                return entry > 50;
+            });
+
+            console.log("dataGreaterThan50: ", dataGreaterThan50);
+
+            donuts = [
+                {"key": "chocolate", "value": 132},
+                {"key": "normal",    "value": 71},
+                {"key": "especial",  "value": 34},
+                {"key": "glaseado",  "value": 50},
+                {"key": "picante",   "value": 89},
+                {"key": "cafe",      "value": 12},
+                {"key": "choNegro",  "value": 28},
+                {"key": "pitufo",    "value": 17},
+                {"key": "choBlanco", "value": 23},
+                {"key": "vainilla",  "value": 30}
+            ];
+
+            var donutsGreaterThan50 = donuts.filter(function(entry) {
+                return entry.value > 50;
+            });
+
+            console.log("donutsGreaterThan50: ", donutsGreaterThan50);
+
+
+            var reformattedDonuts = donuts.map(function(entry) {
+                return {
+                    donut: entry.key,
+                    quantity: entry.value
+                }
+            });
+
+            console.log(reformattedDonuts);
+
+            reformattedDonuts.forEach(function(entry) {
+                console.log(entry);
+            });
+
+        </script>
+    </body>
+</html>

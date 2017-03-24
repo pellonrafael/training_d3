@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Template</title>
+        <script type="text/javascript" src="d3.v3.js"></script>
+        <style type="text/css">
+            body {
+                background-color: gray;
+            }
+            svg {
+                background-color: white;
+            }
+            .bar {
+                shape-rendering: crispEdges;
+                fill: purple;
+            }
+            .bar-label{
+                font-size: 24px;
+                fill: white;
+                text-anchor:end;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+            // Aquí va el código html
+            var w = 800;
+            var h = 450;
+            var margin = {
+                top: 20,
+                bottom: 20,
+                left: 20,
+                right: 20
+            };
+            var data = [132,71,337,93,78,43,20,16,30,8,17,21];
+
+            var width = w - margin.left - margin.right;
+            var height = h - margin.top - margin.bottom;
+            
+            var svg = d3.select("body").append("svg")
+                        .attr("width", w)
+                        .attr("height", h);
+
+      
+            </script>
+    </body>
+</html>

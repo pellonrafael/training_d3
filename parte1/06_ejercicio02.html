@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Template</title>
+        <script type="text/javascript" src="d3.v3.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Aquí va el código html
+
+            d3.select("body").append("h1").html("D3 Training");
+
+            d3.select("body").append("p").html("D3 se puede usar para crear nuevos elementos en el árbol DOM");
+
+            var p = d3.select("body").append("p").text("Descárgatelo desde ");
+
+            p.append("a").attr("href","http://d3js.org").text("d3js.org");
+
+            p.append("span").text("!");
+        </script>
+    </body>
+</html>
