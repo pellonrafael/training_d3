@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CirclePacking</title>
+    <script type="text/javascript" src="d3.v3.js"></script>
+
+<style>
+
+
+body
+{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: auto;
+    background-color: #FFF;
+    font-weight: 400;
+}
+
+circle {
+  fill: #000;
+  fill-opacity: .25;
+  stroke: #777;
+}
+
+.final circle{
+  fill: #000;
+  fill-opacity: 1;
+  stroke: #000;
+}
+text
+{
+    fill: #FFF;
+    font-size: 12px;
+}
+
+
+
+</style>
+
+    <!-- JS's -->
+
+    <script src="d3.v3.js"></script>
+
+</head>
+<body>
+
+<div id="circlePackingParent"></div>
+    <script>
+
+        var diameter = window.innerHeight,
+            format = d3.format(",d");
+        
+        var pack = d3.layout.pack()
+            .size([diameter - 4, diameter - 4])
+            .value(function(d) { return d.size; });
+        
+        var svg = d3.select("body").append("svg")
+            .attr("width", diameter)
+            .attr("height", diameter);
+
+
+
+        d3.json("thedoors.json",function(data){
+
+            console.log("Datos originales");
+            console.log(data);
+
+            var leaves = pack(data);
+
+            console.log("Datos con packing");
+
+            console.log(leaves);
+
+            var node = svg.selectAll('.node')
+                  .data(leaves,function(d){return d.name;});
+
+
+            var nodos = node
+                  .enter().append("g")
+                    .attr("class", function(d) { return d.children ? "node" : "final node"; })
+                    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+            nodos.append("circle")
+                .attr("r", function(d) { return d.r; });
+
+            nodos.append("title")
+                 .text(function(d){
+                     if (d.depth==2)
+                     {
+                         return d.name;
+                     }
+                     else
+                     {
+                         if(d.depth==1)
+                         {
+                             return d.name + "-" + d.year;
+                         }
+                         else
+                         {
+                             return "";
+                         }
+                     }
+                    });
+
+             nodos.append("text")
+                     .attr("text-anchor","middle")
+                 .text(function(d){
+                     if (d.depth==2)
+                     {
+                         return d.name;
+                     }
+                     else
+                     {
+                         if(d.depth==1)
+                         {
+                             return d.name + "-" + d.year;
+                         }
+                         else
+                         {
+                             return "";
+                         }
+                     }
+                    });
+
+
+        });
+
+    </script>
+</body>
+</html>

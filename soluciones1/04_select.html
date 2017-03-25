@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>D3: Selecciones</title>
+        <script type="text/javascript" src="d3.v3.js"></script>
+    </head>
+    <body>
+        <p>Hola, soy un párrafo y estoy bien!!!</p>
+        <a href="www.as.com">as.com</a>
+
+        <script type="text/javascript">
+            // Aquí va el código html
+
+            //Seleccionar el párrafo
+            var paragraph = d3.select("p");
+            console.log(paragraph);
+
+            //Establecer el estilo (Especifica un formato CSS)
+
+            paragraph.style("background-color", "yellow");
+            
+            //Estamos manipulando el DOM
+
+            /*
+            paragraph.style("font-size", "24px");            
+            paragraph.style("font-weight", "bold");
+            paragraph.style("color", "blue");
+            */
+
+            paragraph.style("background-color", "yellow").style("color", "blue");
+
+            paragraph.text("Me han cambiado el texto");
+
+            //paragraph.style({"background-color": "yellow", "color": "blue"});
+
+            d3.select("a").attr("href", "http://www.marca.com");
+
+
+            //d3.select("a").attr("href", "http://www.marca.com").text("marca.com");
+            
+
+
+
+        </script>
+    </body>
+</html>

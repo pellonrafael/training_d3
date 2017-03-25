@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Append</title>
+        <script type="text/javascript" src="d3.v3.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // Aquí va el código html
+            d3.select("body").append("p").text("Parrafo Primero");
+
+            d3.select("body").append("p").text("Párrafo Segundo");
+            d3.select("body").append("p").text("Párrafo Tercero");
+
+            d3.selectAll("p").style("font-size", "24px");
+
+
+            d3.select("body").append("div");
+            d3.select("div").append("p").text("p1");
+            d3.select("div").append("p").text("p2");
+
+            d3.selectAll("p").style("font-size", "36px");
+
+            d3.select("div").selectAll("p").style("color","blue");
+
+            d3.select("div").remove();
+        </script>
+    </body>
+</html>

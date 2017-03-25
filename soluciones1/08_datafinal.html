@@ -14,6 +14,7 @@
             {texto:" El resto della concluían sayo de velarte, calzas de velludo para las fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más fino.",tamanyo:"18px"}
             ];
 
+           d3.select("body").selectAll("p").data(quijoteTam).enter().append("p").style("font-size",function(d){return d.tamanyo;}).html(function(d){return d.texto;});
 
         </script>
     </body>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CirclePacking</title>
+<style>
+
+
+body
+{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: auto;
+    background-color: #FFF;
+    font-weight: 400;
+}
+
+circle {
+  fill: #000;
+  fill-opacity: .25;
+  stroke: #777;
+}
+
+.final circle{
+  fill: #000;
+  fill-opacity: 1;
+  stroke: #000;
+}
+
+text {
+  cursor: default;
+  fill: #FFF;
+  pointer-events: none;
+}
+.tooltip{
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    padding: 8px;
+    font: 15px Helvetica Neue;
+    background: #FFF;
+    border: solid 1px #aaa;
+    border-radius: 8px;
+    pointer-events: none;
+    z-order:1000;
+    text-align:center;
+}
+
+</style>
+
+    <!-- JS's -->
+
+    <script type="text/javascript" src="d3.v3.js"></script>
+
+</head>
+<body>
+
+<div id="circlePackingParent"></div>
+    <script>
+
+        var diameter = window.innerWidth,
+            format = d3.format(",d");
+        
+        var pack = d3.layout.pack()
+            .size([diameter - 4, diameter - 4])
+            .value(function(d) { return d.size; });
+        
+        var svg = d3.select("body").append("svg")
+            .attr("width", diameter)
+            .attr("height", diameter)
+            .on("mousemove", mousemove)
+            .call(d3.behavior.zoom().on("zoom", redraw))
+                .append("g");
+
+
+        var tooltip =  d3.select("body").append("div")
+            .attr("id","tooltip")
+            .html("")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+
+        function mousemove()
+        {
+            tooltip
+                .style("left", (d3.event.pageX +20) + "px")
+                .style("top", (d3.event.pageY - 12) + "px");
+        }
+
+        function redraw()
+        {
+            self.svg.attr("transform",
+                    "translate(" + d3.event.translate + ")"
+                            + " scale(" + d3.event.scale + ")");
+        }
+
+        d3.json("http://assets.outliers.es/cursos/viz/thedoors.json",function(data){
+
+            var leaves = pack(data);
+
+            console.log(leaves);
+
+            var node = svg.selectAll('.node')
+                  .data(leaves,function(d){return d.name;});
+            
+
+            node
+                  .enter().append("g")
+                    .attr("class", function(d) { return d.children ? "node" : "final node"; })
+                    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+                    .on("mouseover",function(d){
+                                    if(!d.children)
+                                    {
+                                        d3.select(this).selectAll("circle").style("fill","#FFF");
+                                        d3.select(this).selectAll("text").style("fill","#000");
+
+                                    }
+                         })
+                   .on("mouseout",function(d){
+                                    if(!d.children)
+                                    {
+                                        d3.select(this).selectAll("circle").style("fill","#000");
+                                        d3.select(this).selectAll("text").style("fill","#FFF");
+
+                                    }
+                         });
+
+            
+            node.append("circle")
+                .attr("r", function(d) { return d.r; })
+                .on("mouseover",function(d){
+                                    if(d.depth!=0)
+                                    {
+                                        if(d.depth==1)
+                                        {
+                                            console.log(d);
+                                            tooltip.style("opacity",1.0).html(d.name+"</br>"+ d.value+" segundos");
+                                        }
+                                        else
+                                        {
+                                            tooltip.style("opacity",1.0).html(d.name+"</br><b>"+ d.parent.name+"</b></br>"+ d.value+" segundos");
+
+                                        }
+                                    }
+
+                         })
+                 .on("mouseout",function(d){tooltip.style("opacity",0.0);});
+
+            node.append("text")
+                    .attr("text-anchor","middle")
+                    .style("opacity",0)
+                    .style("font-size","5px") // guess inicial
+                    .text(function(d){return (!d.children ? d.name : "");})
+                .transition()
+                .duration(1000)
+                    .style("opacity",1.0)
+                    .style("font-size", function(d) {return ((2 * (d.r*8/10) ) / this.getComputedTextLength()) * 5 + "px"; })
+                    .attr("dy", ".3em");
+            
+
+        });
+
+    </script>
+</body>
+</html>

@@ -31,19 +31,9 @@
                 {"key": "vainilla",  "value": 30}
             ];
 
-            var donutsMinValue = d3.min(donuts, function(d) {
-                return d.value;
-            });
-            var donutsMaxValue = d3.min(donuts, function(d) {
-                return d.value;
-            });
-            var donutsMinMaxValue = d3.extent(donuts, function(d) {
-                return d.value;
-            });
-
-            console.log(donutsMinValue);
-            console.log(donutsMaxValue);
-            console.log(donutsMinMaxValue);
+            var donutsMinValue;
+            var donutsMaxValue;
+            var donutsMinMaxValue = []; 
 
         </script>
     </body>

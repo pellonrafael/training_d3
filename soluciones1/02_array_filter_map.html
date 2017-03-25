@@ -29,13 +29,27 @@
                 {"key": "vainilla",  "value": 30}
             ];
 
-            //Donuts mayores que 50. Usar la funcion filter
-            var donutsGreaterThan50 = {};
+            var donutsGreaterThan50 = donuts.filter(function(entry) {
+                return entry.value > 50;
+            });
+
+            console.log("donutsGreaterThan50: ", donutsGreaterThan50);
 
 
-            //Crear un nuevo array donde los objetos tenga los atributos nombre, cantidad y esPar basado en key, value y value respectivamente usando la función map
-            var newDonuts = [];
-            
+            var newDonuts = donuts.map(function(entry) {
+                return {
+                    nombre: entry.key,
+                    cantidad: entry.value,
+                    esPar: [true, false][(entry.value % 2)]
+                }
+            });
+
+            console.log(newDonuts);
+
+            newDonuts.forEach(function(entry) {
+                console.log(entry);
+            });
+
 
         </script>
     </body>

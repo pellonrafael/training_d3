@@ -10,6 +10,12 @@
             .masgrande {
                 font-size: 60px;
             }
+            .clase1 {
+                color: blue;
+            }
+            .clase2 {
+                font-size: 20px;
+            }
         </style>
         <script type="text/javascript" src="d3.v3.js"></script>
 
@@ -17,7 +23,16 @@
     <body>
     
     	<p class="grande">Esto es un párrafo.</p>
+        <!--
         <script type="text/javascript">
+        d3.selectAll("p").attr("class", "clase2");
+        d3.select("p").attr("class","clase1");
+        d3.selectAll("p").attr("class", "clase2");
+
+
         </script>
+        -->
+        <script type="text/javascript" src="06_ejercicio02.js"></script>
+
     </body>
 </html>

@@ -2,20 +2,22 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <title> Arrays: Map & Filter</title>
+        <title>D3: Arrays</title>
         <script type="text/javascript" src="d3.v3.js"></script>
     </head>
     <body>
         <script type="text/javascript">
             // Aquí va el código html
             var data = [132, 71, 34, 50, 89, 12, 28, 17, 23, 30];
+
+            var dataMinValue = d3.min(data);
+            var dataMaxValue = d3.max(data);
+            var dataMinMaxValue = d3.extent(data);
+
+            console.log(dataMinValue);
+            console.log(dataMaxValue);
+            console.log(dataMinMaxValue);
             
-            var dataGreaterThan50 = data.filter(function(entry) {
-                return entry > 50;
-            });
-
-            console.log("dataGreaterThan50: ", dataGreaterThan50);
-
             donuts = [
                 {"key": "chocolate", "value": 132},
                 {"key": "normal",    "value": 71},
@@ -29,13 +31,20 @@
                 {"key": "vainilla",  "value": 30}
             ];
 
-            //Donuts mayores que 50. Usar la funcion filter
-            var donutsGreaterThan50 = {};
 
+            var donutsMinValue = d3.min(donuts, function(d) {
+                return d.value;
+            });
+            var donutsMaxValue = d3.min(donuts, function(d) {
+                return d.value;
+            });
+            var donutsMinMaxValue = d3.extent(donuts, function(d) {
+                return d.value;
+            });
 
-            //Crear un nuevo array donde los objetos tenga los atributos nombre, cantidad y esPar basado en key, value y value respectivamente usando la función map
-            var newDonuts = [];
-            
+            console.log(donutsMinValue);
+            console.log(donutsMaxValue);
+            console.log(donutsMinMaxValue);
 
         </script>
     </body>
