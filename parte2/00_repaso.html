@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Repaso Clase 1</title>
+        <script type="text/javascript" src="d3.v3.js"></script>
+        <style type="text/css">
+            #contenedor {
+                padding: 40px;
+                margin: 30px;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+            // Aquí va el código html
+            var quijoteTam=[
+                {texto:"En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.",tamanyo:12, color: "blue"},
+                {texto: "Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lentejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.",tamanyo:15, color: "red"},
+                {texto:" El resto della concluían sayo de velarte, calzas de velludo para las fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más fino.",tamanyo:18, color: "green"}
+                ];
+
+            function parrafos() {
+                // Crear tantos parrafos como elementos hay en el array quijoteTam
+            }
+
+            function estilos() {
+                // Asignar a los párrafos los estilos font-size y color con los valores de tamanyo y color
+            }
+
+            function propiedades() {
+                // Cambiar las propiedades del enlace dentro del div con id contenedor por
+                // href: http://www.upsa.es, target: blank y de texto UPSA.
+            }
+
+            function borrar() {
+                //Borrar todos los A
+            }
+        </script>
+
+        <div style="margin-top:50px;">
+            <a href="#" id="crearParrafos"  onClick="parrafos();">Crear Parrafos</a><br>
+            <a href="#" id="asignarEstilos" onClick="estilos();">Estilos</a><br>
+            <a href="#" id="cambiarPropiedades" onClick="propiedades()">Propiedades</a><br>
+            <a href="#" id="cambiarPropiedades" onClick="borrar()">Borrar</a><br>
+        </div>
+
+        <div id="contenedor">
+            <a href="#">ENLACE</a>
+        </div>
+
+
+
+    </body>
+</html>
