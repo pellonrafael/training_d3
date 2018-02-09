@@ -3,12 +3,14 @@
     <head>
         <meta charset="utf-8">
         <title>Arrays en Javascript</title>
-        <script type="text/javascript" src="d3.v3.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
     </head>
     <body>
         <script type="text/javascript">
-            // Aquí va el código html
+            // Aquí va el código
             var data = [132, 71, 34, 50, 89, 12, 28, 17, 23, 30];
+
+            /*
             console.log(data);
             console.log(data[0]); //Elemento en posición 1
             console.log(data[6]); //Elemento en posición 7
@@ -22,6 +24,7 @@
             console.log(donut.key, donut.value);
             console.log(donut["key"], donut["value"]);
 
+            */
             donuts = [
                 {"key": "chocolate", "value": 132},
                 {"key": "normal", "value": 71},
@@ -44,14 +47,15 @@
                 console.log(entry["key"], entry["value"]);
             });
 
+
             //Crea un objeto y luego almacena en él, el valor agregado de cada tipo de donuts
             var donuts_aggregated = {};
             for (var i=0, len=donuts.length; i < len; i++) {
                 console.log(donuts_aggregated, donuts[i]);
                 if (donuts[i]['key'] in donuts_aggregated) {
-                    donuts_aggregated[donuts[i]['key']] = donuts_aggregated[donuts[i]['key']] + 1;
+                    donuts_aggregated[donuts[i]['key']] += donuts[i]['value'];
                 } else {
-                    donuts_aggregated[donuts[i]['key']] = 1;
+                    donuts_aggregated[donuts[i]['key']] = donuts[i]['value'];
                 }
             }
             console.log(donuts_aggregated);
@@ -60,9 +64,9 @@
             var donuts_aggregated_anonima = {};
             donuts.forEach( function(entry) {
                 if (entry.key in donuts_aggregated_anonima) {
-                    donuts_aggregated_anonima[entry.key] = donuts_aggregated_anonima[entry.key] + 1;
+                    donuts_aggregated_anonima[entry.key] = donuts_aggregated_anonima[entry.key] + entry.value;
                 } else {
-                    donuts_aggregated_anonima[entry.key] = 1;
+                    donuts_aggregated_anonima[entry.key] = entry.value;
                 }
             });
             console.log(donuts_aggregated_anonima);

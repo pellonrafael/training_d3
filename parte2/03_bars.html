@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>D3 Template</title>
-        <script type="text/javascript" src="d3.v3.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
         <style type="text/css">
             body {
                 background-color: gray;
@@ -24,16 +24,17 @@
         -->
 
         <script type="text/javascript">
-            // Aquí va el código html
+            // Aquí va el código
             var w = 800;
             var h = 450;
-            var data = [132,71,337,93,78,43,20,16,30,8,17,21];
+            var data = [132,71,337,930,78,43,20,16,30,8,17,21];
 
             var svg = d3.select("body").append("svg")
                         .attr("width", w)
                         .attr("height", h);
 
-
+            //Pista: Rectángulos con width igual a data, y de altura fija (20px)
+            
         </script>
     </body>
 </html>

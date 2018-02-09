@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>D3 Template</title>
-        <script type="text/javascript" src="d3.v3.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
         <style type="text/css">
             body {
                 background-color: gray;
@@ -34,7 +34,7 @@
     
     <body>
         <script type="text/javascript">
-            // Aquí va el código html
+            // Aquí va el código
             var w = 800;
             var h = 450;
             var margin = {
@@ -51,6 +51,60 @@
             var svg = d3.select("body").append("svg")
                         .attr("width", w)
                         .attr("height", h);
+
+            var x = d3.scale.linear()
+                    .domain([0,d3.max(data)])
+                    .range([0,width]);
+            var y = d3.scale.linear()
+                    .domain([0,data.length])
+                    .range([0,height]);
+
+            svg.selectAll(".bar")
+                .data(data)
+                .enter()
+                    .append("rect")
+                    .classed("bar", true)
+                    .classed("bar-highlight", function(d,i) {
+                        if (d>80) 
+                            return true;
+                        else
+                            return false;
+                    })
+                    .attr("x", margin.left)
+                    .attr("y", function(d,i){
+                        return y(i)+margin.top;
+                    })
+                    .attr("width", function(d,i){
+                        return x(d);
+                    })
+                    .attr("height", function(d,i){
+                        return y(1)-1;
+                    });
+
+            svg.selectAll(".bar-label")
+                .data(data)
+                .enter()
+                    .append("text")
+                    .classed("bar-label", true)
+                    .classed("bar-label-highlight", function(d,i) {
+                        if (d>80) 
+                            return true;
+                        else
+                            return false;
+                    })
+                    .attr("x", function(d,i){
+                        return x(d)+margin.left;
+                    })
+                    .attr("dx", -4)
+                    .attr("y", function(d,i){
+                        return y(i);
+                    })
+                    .attr("dy", function(d,i){
+                        return margin.top + (y(1)/1.5+2);
+                    })
+                    .text(function(d,i){
+                        return d;
+                    });
             </script>
     </body>
 </html>

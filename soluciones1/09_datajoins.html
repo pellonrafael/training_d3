@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>El Quijote otra vez</title>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+    </head>
+    <body>
+        <h1>El Quijote otra vez</h1>
+        <div style="margin-top:50px;">
+            <a href="#" onClick="escribe(quijote1);">Quijote1</a><br>
+            <a href="#" onClick="escribe(quijote2);">Quijote2</a><br>
+            <a href="#" onClick="escribe(quijote3);">Quijote3</a><br>
+            <a href="#" onClick="escribe(quijote4);">Quijote4</a><br>
+
+        </div>
+
+        <div id="contenedor"></div>
+
+        <script type="text/javascript">
+        var quijote1=[
+        "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.",
+        "Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lentejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.",
+        "El resto della concluían sayo de velarte, calzas de velludo para las fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más fino."];
+
+        var quijote2 = [
+            "¡Oh, memoria, enemiga mortal de mi descanso!",
+            "La virtud más es perseguida de los malos que amada de los buenos.",
+            "La ingratitud es hija de la soberbia.",
+            "La razón de la sinrazón que a mi razón se hace, de tal manera mi razón enflaquece, que con razón me quejo de la vuestra fermosura."
+        ];
+
+        var quijote3 = [
+            "El resto della concluían sayo de velarte, calzas de velludo para las fiestas con sus pantuflos de lo mismo, los días de entre semana se honraba con su vellori de lo más fino."
+        ];
+
+        var quijote4 = [
+        "Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lentejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda.",
+        ];
+
+        function escribe(misDatos) {
+            var parrafos = d3.select("#contenedor").selectAll("p").data(misDatos);
+
+            parrafos.html(function(d) { return d;});
+            parrafos.enter().append("p").html(function(d){return d;});
+            parrafos.exit().remove();
+        }
+        </script>
+    </body>
+</html>

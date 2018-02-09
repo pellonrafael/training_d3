@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title> Arrays: Map & Filter</title>
-        <script type="text/javascript" src="d3.v3.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
     </head>
     <body>
         <script type="text/javascript">
-            // Aquí va el código html
+            // Aquí va el código
             var data = [132, 71, 34, 50, 89, 12, 28, 17, 23, 30];
             
             var dataGreaterThan50 = data.filter(function(entry) {
@@ -29,13 +29,23 @@
                 {"key": "vainilla",  "value": 30}
             ];
 
-            //Donuts mayores que 50. Usar la funcion filter
-            var donutsGreaterThan50 = {};
+            var donutsGreaterThan50 = [];
+
+            //Obten los donuts que el value es mayor que 50
+
+            console.log("donutsGreaterThan50: ", donutsGreaterThan50);
 
 
-            //Crear un nuevo array donde los objetos tenga los atributos nombre, cantidad y esPar basado en key, value y value respectivamente usando la función map
+            /*
+            Crea un nuevo array de donuts donde tenga las propiedades nombre(key), preciodoble(value) y tieneDescuento(si es hay mas de 45 elementos, hay oferta)
+            */
             var newDonuts = [];
-            
+
+            console.log(newDonuts);
+
+
+
+
 
         </script>
     </body>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>D3 Template</title>
-        <script type="text/javascript" src="d3.v3.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
         <style type="text/css">
             body {
                 background-color: gray;
@@ -34,7 +34,7 @@
     
     <body>
         <script type="text/javascript">
-            // Aquí va el código html
+            // Aquí va el código
             var w = 800;
             var h = 450;
             var margin = {
@@ -108,7 +108,8 @@
 
             svg.selectAll(".bar").transition()
             .delay(function(d, i) {  //Uncomment these lines for fun!
-                return i * 100;  //Set a per-element delay
+                //return i * 100;  //Set a per-element delay
+                return 300;
             })
             .duration(1500)
             .attr("width", function(d) {
